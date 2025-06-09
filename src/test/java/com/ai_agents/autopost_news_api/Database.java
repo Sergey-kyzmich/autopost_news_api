@@ -30,7 +30,7 @@ public class Database {
                 USERPASS
         );
         // Создание объекта JdbcTemplate
-        this.db = new JdbcTemplate(dataSource);
+        db = new JdbcTemplate(dataSource);
         System.out.println("Таблица успешно подключена!");
     }
 
@@ -63,7 +63,7 @@ public class Database {
     */
     public boolean send(String execute) {
         try {
-            this.db.execute(execute);
+            db.execute(execute);
             return true;
         } catch (Exception e) {
             System.out.println(e);
@@ -79,7 +79,7 @@ public class Database {
      */
     public List<Map<String, Object>> get(String execute) { 
         try{
-        List<Map<String, Object>> rows = this.db.queryForList("SELECT * FROM students");
+        List<Map<String, Object>> rows = db.queryForList("SELECT * FROM students");
         return rows;
         } catch (Exception e) {
             System.out.println("|ERROR| "+e);

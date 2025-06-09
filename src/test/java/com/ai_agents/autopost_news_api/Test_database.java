@@ -1,9 +1,9 @@
 package com.ai_agents.autopost_news_api;
 import java.io.IOException;
-import org.springframework.jdbc.core.JdbcTemplate;
+// import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.*;
-import java.io.*;
-import java.sql.SQLException;
+// import java.io.*;
+// import java.sql.SQLException;
 
 public class Test_database {
     public static void main(String[] args) throws IOException {
