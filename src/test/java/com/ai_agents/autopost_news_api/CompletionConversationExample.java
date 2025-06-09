@@ -21,7 +21,6 @@ public class CompletionConversationExample {
         // Получение данных из config.ini
         String[] config = get_config();
         final String KEY = config[0];
-        final String ID = config[1];
         System.out.println(KEY);
 
         GigaChatChatModel model = GigaChatChatModel.builder()
