@@ -1,0 +1,5 @@
+com\ai_agents\autopost_news_api\Api.class
+com\ai_agents\autopost_news_api\database\UserService.class
+com\ai_agents\autopost_news_api\database\User.class
+com\ai_agents\autopost_news_api\database\UserRepository.class
+com\ai_agents\autopost_news_api\Database.class
