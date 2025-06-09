@@ -1,4 +1,4 @@
 com\ai_agents\autopost_news_api\Api.class
 com\ai_agents\autopost_news_api\Test_database.class
-com\ai_agents\autopost_news_api\CompletionConversationExample.class
 com\ai_agents\autopost_news_api\Database.class
+com\ai_agents\autopost_news_api\SimpleState.class
