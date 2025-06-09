@@ -5,7 +5,7 @@ import java.util.*;
 import java.io.*;
 import java.sql.SQLException;
 
-public class test {
+public class Test_database {
     public static void main(String[] args) throws IOException {
         
         Database db = new Database();

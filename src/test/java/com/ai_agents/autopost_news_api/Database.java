@@ -18,16 +18,16 @@ public class Database {
         
         // Получение данных из config.ini
         String[] config = get_config();
-        final String Username = config[0];
-        final String Userpass = config[1];
-        final String Server_ip = config[2];
-        final String DB_name = config[3];
+        final String USERNAME = config[0];
+        final String USERPASS = config[1];
+        final String SERVER_IP = config[2];
+        final String DB_NAME = config[3];
 
         // Подключение к БД 
         DataSource dataSource = new DriverManagerDataSource(
-                "jdbc:postgresql://"+Server_ip+"/"+DB_name,
-                Username,
-                Userpass
+                "jdbc:postgresql://"+SERVER_IP+"/"+DB_NAME,
+                USERNAME,
+                USERPASS
         );
         // Создание объекта JdbcTemplate
         this.db = new JdbcTemplate(dataSource);
@@ -47,11 +47,11 @@ public class Database {
         InputStream inputStream = new FileInputStream("src/test/java/com/ai_agents/autopost_news_api/config.ini");
         // Читаем данные из файла
         properties.load(inputStream);
-        final String Username = properties.getProperty("username", "postgresql");
-        final String Userpass = properties.getProperty("userpassword", "postgresql");
-        final String Server_ip = properties.getProperty("ip", "postgresql");
-        final String DB_name = properties.getProperty("name_db", "postgresql");
-        String[] out = {Username, Userpass, Server_ip, DB_name};
+        final String USERNAME = properties.getProperty("USERNAME", "postgresql");
+        final String USERPASS = properties.getProperty("USERPASSword", "postgresql");
+        final String SERVER_IP = properties.getProperty("ip", "postgresql");
+        final String DB_NAME = properties.getProperty("name_db", "postgresql");
+        String[] out = {USERNAME, USERPASS, SERVER_IP, DB_NAME};
         return out;
     }
 
