@@ -21,7 +21,6 @@ public class CompletionConversationExample {
         // Получение данных из config.ini
         String[] config = get_config();
         final String KEY = config[0];
-        System.out.println(KEY);
 
         GigaChatChatModel model = GigaChatChatModel.builder()
         .defaultChatRequestParameters(GigaChatChatRequestParameters.builder()
@@ -38,7 +37,7 @@ public class CompletionConversationExample {
         .build();
 
 
-      String answer = model.chat("ТЫ кто?");
+      String answer = model.chat("Что мне не надо делать, чтобы случайно не захватить мир?");
       System.out.println(answer); // Pulp Fiction, Kill Bill, etc.
     }
 
