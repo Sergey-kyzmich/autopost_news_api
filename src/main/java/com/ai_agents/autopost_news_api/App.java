@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("")
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-public class api {
+public class App {
 
     public static void main(String[] args) {
-        SpringApplication.run(api.class, args);
+        SpringApplication.run(App.class, args);
     }
 
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class Api {
 
     public static void main(String[] args) {
-        SpringApplication.run(api.class, args);
+        SpringApplication.run(Api.class, args);
     }
 
 
