@@ -8,12 +8,15 @@ import java.io.InputStream;
 import java.util.*;
 // import java.io.*;
 
-import chat.giga.langchain4j.GigaChatChatModel;
+import chat.giga.client.GigaChatClient;
 import chat.giga.client.auth.AuthClient;
-import chat.giga.client.auth.AuthClientBuilder;
-import chat.giga.langchain4j.GigaChatChatRequestParameters;
+import chat.giga.client.auth.AuthClientBuilder.OAuthBuilder;
 import chat.giga.model.ModelName;
 import chat.giga.model.Scope;
+import chat.giga.model.completion.ChatMessageRole;
+import chat.giga.model.completion.CompletionRequest;
+import chat.giga.model.completion.CompletionResponse;
+import chat.giga.model.completion.ChatMessage;
 public class CompletionConversationExample {
 
     public static void main(String[] args) throws IOException {
@@ -22,23 +25,36 @@ public class CompletionConversationExample {
         String[] config = get_config();
         final String KEY = config[0];
 
-        GigaChatChatModel model = GigaChatChatModel.builder()
-        .defaultChatRequestParameters(GigaChatChatRequestParameters.builder()
-                .modelName(ModelName.GIGA_CHAT_PRO)
-                .build())
-        .authClient(AuthClient.builder()
-                .withOAuth(AuthClientBuilder.OAuthBuilder.builder()
-                        .scope(Scope.GIGACHAT_API_PERS)
-                        .authKey(KEY)
+        GigaChatClient client = GigaChatClient.builder()
+                .verifySslCerts(false)
+                .authClient(AuthClient.builder()
+                        .withOAuth(OAuthBuilder.builder()
+                                .scope(Scope.GIGACHAT_API_PERS)
+                                .authKey(KEY)
+                                .build())
                         .build())
-                .build())
-        .logRequests(true)
-        .logResponses(true)
-        .build();
+                .build();
+        CompletionRequest.CompletionRequestBuilder builder = CompletionRequest.builder()
+                .model(ModelName.GIGA_CHAT_MAX_2);
+        builder = builder.message(ChatMessage.builder()
+                        .content("Напиши анекдот до 15-ти слов")
+                        .role(ChatMessageRole.SYSTEM)
+                        .build());
+        CompletionRequest request = builder.build();
+        CompletionResponse response = client.completions(request);
+        System.out.println(response.choices().get(0).message().content());
+        builder = builder.message(ChatMessage.builder()
+                .content("напиши текст моего последнего вопроса")
+                .role(ChatMessageRole.USER).build());
+        request = builder.build();
+        response = client.completions(request);
+        System.out.println(response.choices().get(0).message().content());
+
+    }
 
 
-      String answer = model.chat("Что мне не надо делать, чтобы случайно не захватить мир?");
-      System.out.println(answer); // Pulp Fiction, Kill Bill, etc.
+    public static void func1() {
+
     }
 
 
