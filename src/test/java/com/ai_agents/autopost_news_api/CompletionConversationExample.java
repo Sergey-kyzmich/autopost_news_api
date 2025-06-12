@@ -21,8 +21,7 @@ public class CompletionConversationExample {
     public static void main(String[] args) throws IOException {
         
         // Получение данных из config.ini
-        String[] config = get_config();
-        final String KEY = config[0];
+        String KEY = get_config();
 
         GigaChatClient client = GigaChatClient.builder()
                 .verifySslCerts(false)
@@ -57,16 +56,14 @@ public class CompletionConversationExample {
     }
 
 
-     private static String[] get_config() throws IOException {
+     private static String get_config() throws IOException {
         Properties properties = new Properties();    
         // Открываем файл config.ini для чтения
         InputStream inputStream = new FileInputStream("src/test/java/com/ai_agents/autopost_news_api/config.ini");
         // Читаем данные из файла
         properties.load(inputStream);
-        final String key = properties.getProperty("key", "gigachat");
-        final String id = properties.getProperty("client_id", "gigachat");
-        String[] out = {key,id};
-        return out;
+        final String KEY = properties.getProperty("key", "gigachat");
+        return KEY;
     }
 
 
