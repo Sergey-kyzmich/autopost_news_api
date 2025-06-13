@@ -1,1 +1,3 @@
-com\ai_agents\autopost_news_api\api.class
+com\ai_agents\autopost_news_api\Authorization.class
+com\ai_agents\autopost_news_api\App.class
+com\ai_agents\autopost_news_api\Database.class

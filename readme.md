@@ -76,4 +76,6 @@
 - **Parameters:**
     - **execute - Запрос, отправляемый в бд в формате sql кода.**
 - **Return**
-    - **response** - **List<Map<String, Object>>** - Данные из таблицы при успешном выполнении. None в случае ошибки.
+
+- **response** - **List<Map<String, Object>>** - Данные из таблицы при успешном выполнении. None в случае ошибки.
+
