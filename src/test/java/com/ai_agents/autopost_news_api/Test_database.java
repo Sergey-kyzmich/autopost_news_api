@@ -10,14 +10,14 @@ public class Test_database {
         
         Database db = new Database();
         db.connect();
-        // db.update("INSERT INTO students(name, age, grade) VALUES(?, ?, ?)",
-        //         "Алиса", 20, "A");
-        List<Map<String, Object>> res = db.get("");
-        for (Map<String, Object> row : res) {
-            System.out.println("ID: " + row.get("id"));
-            System.out.println("Name: " + row.get("name"));
-            System.out.println("Age: " + row.get("age"));
-            System.out.println("Grade: " + row.get("grade"));
-        }
+        db.send("INSERT INTO users (login, password, token) VALUES('ksks@mail.ru', 'my pass', 'best token');");
+        List<Map<String, Object>> res = db.get("SELECT * FROM users;");
+        System.out.println(res);
+        // for (Map<String, Object> row : res) {
+        //     System.out.println("ID: " + row.get("id"));
+        //     System.out.println("Name: " + row.get("name"));
+        //     System.out.println("Age: " + row.get("age"));
+        //     System.out.println("Grade: " + row.get("grade"));
+        // }
     }
 }

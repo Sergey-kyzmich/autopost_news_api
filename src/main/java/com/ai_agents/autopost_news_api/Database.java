@@ -8,7 +8,7 @@ import java.io.*;
 public class Database {
     //Создание экземляра JdbcTemplate, с помощью которого происходит взаимодействие с бд. 
     //Значение присваивается во время создания подключения. function: connect
-    private static JdbcTemplate db;
+    public static JdbcTemplate db;
 
     /**
      * Функция позволяет подключить базу данных. Данные для подключения находятся в файле config.ini
@@ -31,6 +31,7 @@ public class Database {
         );
         // Создание объекта JdbcTemplate
         db = new JdbcTemplate(dataSource);
+        
         System.out.println("Таблица успешно подключена!");
     }
 
@@ -47,8 +48,8 @@ public class Database {
         InputStream inputStream = new FileInputStream("src/test/java/com/ai_agents/autopost_news_api/config.ini");
         // Читаем данные из файла
         properties.load(inputStream);
-        final String USERNAME = properties.getProperty("USERNAME", "postgresql");
-        final String USERPASS = properties.getProperty("USERPASSword", "postgresql");
+        final String USERNAME = properties.getProperty("username", "postgresql");
+        final String USERPASS = properties.getProperty("userpassword", "postgresql");
         final String SERVER_IP = properties.getProperty("ip", "postgresql");
         final String DB_NAME = properties.getProperty("name_db", "postgresql");
         String[] out = {USERNAME, USERPASS, SERVER_IP, DB_NAME};
@@ -79,7 +80,7 @@ public class Database {
      */
     public List<Map<String, Object>> get(String execute) { 
         try{
-        List<Map<String, Object>> rows = db.queryForList("SELECT * FROM students");
+        List<Map<String, Object>> rows = db.queryForList(execute);
         return rows;
         } catch (Exception e) {
             System.out.println("|ERROR| "+e);
