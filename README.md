@@ -7,7 +7,6 @@
 - **Postgresql**
 - **и тд.))**
 
-
 <br>
 
 # Описание функций API
@@ -48,6 +47,7 @@
 - **filtres** - **ArrayList<String> | None** (Дополнительные параметры, не упомянутые выше)
 - **sorted** - **Map<String, String> | None** (Словарь типа "Ключ": "Значение". Сортирует список новостей в указанном порядке(одном из 3))(Список ключей: date, popularity, likes)(Список значений: BottomToTop, TopToBottom)
 ### Оценка ответа
+### http://api.ru/estimation
 - **token** - **String**
 - **id** - **Integer** (id новостного поста)
 - **estimation** - Boolean (Оценка поста)(True - хорошо, False - Плохо)
@@ -78,5 +78,3 @@
     - **execute - Запрос, отправляемый в бд в формате sql кода.**
 - **Return**
     - **response** - **List<Map<String, Object>>** - Данные из таблицы при успешном выполнении. None в случае ошибки.
-
-
