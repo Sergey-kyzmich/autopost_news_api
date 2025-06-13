@@ -1,0 +1,25 @@
+services:
+  db:
+      image: postgres:17-alpine
+      # restart: no
+      environment:
+        POSTGRES_DB: postgres
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: 12345
+        # POSTGRES_INITDB_ARGS: "-A mb5"
+      volumes:
+        - ./pg_data:/var/lib/postgresq1/data
+      ports:
+        - 54321:5432
+
+
+  app:
+    build: . 
+    depends_on:
+      - db
+    ports:
+      - "80:80"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 12345

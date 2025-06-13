@@ -13,7 +13,7 @@
 
 ## Авторизация
 ### http://api.ru/auth
-**GET** metod
+**POST** metod
 
 ### Parametrs
 - **login** - **String** (mail)
@@ -47,6 +47,7 @@
 - **filtres** - **ArrayList<String> | None** (Дополнительные параметры, не упомянутые выше)
 - **sorted** - **Map<String, String> | None** (Словарь типа "Ключ": "Значение". Сортирует список новостей в указанном порядке(одном из 3))(Список ключей: date, popularity, likes)(Список значений: BottomToTop, TopToBottom)
 ### Оценка ответа
+### http://api.ru/estimation
 - **token** - **String**
 - **id** - **Integer** (id новостного поста)
 - **estimation** - Boolean (Оценка поста)(True - хорошо, False - Плохо)

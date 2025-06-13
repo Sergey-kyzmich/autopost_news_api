@@ -28,7 +28,7 @@ CMD ["mvn"]
 COPY . /app
 WORKDIR /app
 RUN mvn clean package
-
+WORKDIR ..
 #TODO ---------------------JAVA26-----------------------------
 #
 # NOTE: THIS DOCKERFILE IS GENERATED VIA "apply-templates.sh"
@@ -119,6 +119,7 @@ CMD ["jshell"]
 
 
 
-
+# WORKDIR /app
+COPY configDocker.ini config.ini
 COPY --from=build /app/target/*.jar /app.jar
 CMD ["java", "-jar", "/app.jar"]
