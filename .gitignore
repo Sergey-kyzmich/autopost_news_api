@@ -39,3 +39,4 @@ target/autopost_news_api-0.0.1-SNAPSHOT.jar
 target/autopost_news_api-0.0.1-SNAPSHOT.jar.original
 src/main/java/com/ai_agents/autopost_news_api/config.ini
 configDocker.ini
+.env

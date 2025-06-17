@@ -53,10 +53,14 @@ public class Database {
         InputStream inputStream = new FileInputStream("config.ini");
         // Читаем данные из файла
         properties.load(inputStream);
-        final String USERNAME = properties.getProperty("username", "postgresql");
-        final String USERPASS = properties.getProperty("userpassword", "postgresql");
-        final String SERVER_IP = properties.getProperty("ip", "postgresql");
-        final String DB_NAME = properties.getProperty("name_db", "postgresql");
+        // final String USERNAME = properties.getProperty("username", "postgresql");
+        // final String USERPASS = properties.getProperty("userpassword", "postgresql");
+        // final String SERVER_IP = properties.getProperty("ip", "postgresql");
+        // final String DB_NAME = properties.getProperty("name_db", "postgresql");
+        final String USERNAME = System.getenv("DB_USERNAME");
+        final String USERPASS = System.getenv("DB_PASSWORD");
+        final String SERVER_IP= System.getenv("DB_IP");
+        final String DB_NAME  = System.getenv("DB_NAME");
         String[] out = {USERNAME, USERPASS, SERVER_IP, DB_NAME};
         return out;
     }

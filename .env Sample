@@ -1,0 +1,5 @@
+DB_URL = jdbc:postgresql://db:5432/postgres
+DB_IP = db
+DB_USERNAME = user
+DB_PASSWORD = password
+DB_NAME = postgres

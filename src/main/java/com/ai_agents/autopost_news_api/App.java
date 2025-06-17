@@ -18,7 +18,6 @@ public class App {
     public static void main(String[] args) throws IOException{
         StartApi StApi = new StartApi();
         db.connect();
-        System.out.println("Dir = "+System.getProperty("user.dir"));
         StApi.createTable(db);
         SpringApplication.run(App.class, args);
     }

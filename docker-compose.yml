@@ -2,10 +2,11 @@ services:
   db:
       image: postgres:17-alpine
       # restart: no
+      env_file: ./.env
       environment:
-        POSTGRES_DB: postgres
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: 12345
+        POSTGRES_DB: ${DB_NAME}
+        POSTGRES_USER: ${DB_USERNAME}
+        POSTGRES_PASSWORD: ${DB_PASSWORD}
         # POSTGRES_INITDB_ARGS: "-A mb5"
       volumes:
         - ./pg_data:/var/lib/postgresq1/data
@@ -19,7 +20,22 @@ services:
       - db
     ports:
       - "80:80"
+    env_file: ./.env
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/postgres
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: 12345
+      # SPRING_APPLICATION_JSON: '{
+      #   "main.datasource.url" : "$MAIN_DATASOURCE_URL",
+      #   "main.datasource.username" : "$MAIN_DATASOURCE_USERNAME",
+      #   "main.datasource.password" : "$MAIN_DATASOURCE_PASSWORD",
+      #   "security.bot.token" : "$SECURITY_BOT_TOKEN",
+      #   "jmix.awsfs.access-key" : "$JMIX_AWSFS_ACCESS_KEY",
+      #   "jmix.awsfs.secret-access-key" : "$JMIX_AWSFS_SECRET_ACCESS_KEY",
+      #   "jmix.awsfs.region" : "$JMIX_AWSFS_REGION",
+      #   "jmix.awsfs.bucket" : "$JMIX_AWSFS_BUCKET",
+      #   "jmix.awsfs.chunk-size" : "$JMIX_AWSFS_CHUNK_SIZE",    
+      #   "jmix.awsfs.endpoint-url" : "$JMIX_AWSFS_ENDPOINT_URL",
+      #   "jmix.core.temp-dir" : "$JMIX_CORE_TEMP_DIR",
+      #   "application.domain": "$APPLICATION_DOMAIN"       
+      # }'
+      SPRING_DATASOURCE_URL: ${DB_URL}
+      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
